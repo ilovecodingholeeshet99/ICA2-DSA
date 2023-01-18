@@ -1,0 +1,8 @@
+﻿'ICA2 DSA.exe' (Win32): Loaded 'C:\school poop\SEM 2 Y1\DX1119 - DATA STRUCTURES AND ALGORITHMS\Assignment 2\ICA2 DSA\Debug\ICA2 DSA.exe'. Symbols loaded.
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'ICA2 DSA.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+The thread 0x42e4 has exited with code 0 (0x0).
