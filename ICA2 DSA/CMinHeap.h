@@ -21,5 +21,5 @@ public:
 	int parent(int index_param);
 	int leftC(int index_param);
 	int rightC(int  index_param);
-	void swap();
+	void swap(int i , int j);
 };

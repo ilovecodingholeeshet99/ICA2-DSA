@@ -59,8 +59,8 @@ void CMinHeap::move(const std::string& name, const int newD)
 		if (index > 0)
 		{
 			swap(index, m_parent);
-			index = m_parent;
-			m_parent = parent(index);
+			/*index = m_parent;
+			m_parent = parent(index);*/
 		}
 		else break; // Break if bigger
 	}
@@ -70,14 +70,14 @@ void CMinHeap::move(const std::string& name, const int newD)
 		if (players[index]->getDist() > players[m_left]->getDist() && m_left <= nextIdx)
 		{
 			swap(index, m_left); // If player index dist is bigger then swap	
-			index = m_left;
-			m_left = leftC(index);
+			/*index = m_left;
+			m_left = leftC(index);*/
 		}
 		else if (players[index]->getDist() > players[m_right]->getDist() && m_right <= nextIdx)
 		{
 			swap(index, m_right);
-			index = m_right;
-			m_right = rightC(index);	
+			/*index = m_right;
+			m_right = rightC(index);*/	
 		}
 		else break; 
 	}

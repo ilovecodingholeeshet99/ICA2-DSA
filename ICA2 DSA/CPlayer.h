@@ -11,5 +11,6 @@ public:
 	~CPlayer();
 	const std::string& getName();
 	const int getDist();
+	void setDist(int newD);
 };
 

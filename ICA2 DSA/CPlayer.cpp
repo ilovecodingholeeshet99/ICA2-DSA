@@ -15,3 +15,8 @@ const int CPlayer::getDist()
 {
     return dist;
 }
+
+void CPlayer::setDist(int newD)
+{
+    dist = newD;
+}
