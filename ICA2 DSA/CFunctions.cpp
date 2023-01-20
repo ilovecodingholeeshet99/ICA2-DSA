@@ -22,13 +22,13 @@ void u_input(std::string& name, int distance, int input, CMinHeap& tree)
 		}
 		else return;
 	case 3: // Remove player
-		std::cout << "Enter name of player to remove:  " << std::endl; std::cin >> distance;
-		if (tree.isExist(name)) /*tree.remove(name);*/ // Execute remove function
+		std::cout << "Enter name of player to remove:  " << std::endl; std::cin >> name;
+		if (tree.isExist(name))
 		{
-			system("CLS");
-			return;
+			tree.del(name);
+			break;
 		}
-		else break;
+		else return;
 	case 4: // Print heap
 		tree.preOrder(0);
 		break;
