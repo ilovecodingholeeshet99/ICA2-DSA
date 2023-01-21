@@ -9,8 +9,8 @@ private:
 public:
 	CPlayer(const std::string& playerName, const int d);
 	~CPlayer();
-	const std::string& getName();
-	const int getDist();
+	std::string& getName();
+	int getDist() const ;
 	void setDist(int newD);
 };
 

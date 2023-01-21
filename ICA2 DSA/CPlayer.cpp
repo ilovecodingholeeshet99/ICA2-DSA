@@ -4,11 +4,11 @@ CPlayer::CPlayer(const std::string& playerName, const int d) : name(playerName),
 CPlayer::~CPlayer()
 {
 }
-const std::string& CPlayer::getName()
+std::string& CPlayer::getName() 
 {
     return name;
 }
-const int CPlayer::getDist()
+int CPlayer::getDist() const
 {
     return dist;
 }
