@@ -50,19 +50,19 @@ void CMinHeap::move(const std::string& name, const int newD)
 }
 void CMinHeap::del(const std::string& name)	
 {
-	const int toDel = findPlayer(name); // Store index to delete
-	const int last = returnIdx(); 
-	const int last_parent = parent(last);  // Parent of last index
-	swap(toDel, last); // Pointer pointing at toDel is pointing to last vice versa
-	delete players[last];
-	players[last] = nullptr;
-	moveup(toDel, parent(toDel));
+	int toDel = findPlayer(name); // Node we want to delete 
+	int last = returnIdx(); // Last node
+	delete players[toDel]; // Delete player
+	players[toDel] = nullptr; 
+	swap(toDel, last);
 	movedown(toDel, parent(toDel), leftC(toDel), rightC(toDel));
-	nextIdx--;
+	nextIdx--; // *
 }
 void CMinHeap::preOrder(int start) const
 {
 	if (players[start] == nullptr) return;
+	if (players[start] == players[0])
+		std::cout << "root:  " << players[start]->getName() << ' ' << players[start]->getDist() << std::endl;
 	std::cout << "node:  " << players[start]->getName() << ' ' << players[start]->getDist() << std::endl;
 	if (players[(start * 2) + 1] != nullptr)
 		// this node has left child
@@ -83,10 +83,7 @@ int CMinHeap::returnIdx() const
 int CMinHeap::findPlayer(const std::string& name)
 {
 	for (int i = 0; i <= returnIdx(); ++i)
-	{
-		if (players[i] == nullptr) continue;
 		if (name == players[i]->getName()) return i;
-	}
 }
 int CMinHeap::parent(const int index) const
 {
@@ -102,7 +99,7 @@ int CMinHeap::rightC(const int index) const
 }
 void CMinHeap::swap(int i, int j)
 {
-	CPlayer* temp = players[i]; // Create temp pointer which points at player[i] pointer that is pointing to the player
+	CPlayer* temp = players[i];
 	players[i] = players[j];
 	players[j] = temp;
 }
@@ -122,30 +119,37 @@ void CMinHeap::moveup(int p_idx, int p_parent)
 }
 void CMinHeap::movedown(int p_idx, int p_parent, int p_left, int p_right)
 {
-	// Check left first then right
-	if (players[p_left] != nullptr)
+	while (p_idx < returnIdx())
 	{
-		if (players[p_idx]->getDist() > players[p_left]->getDist() && p_idx < returnIdx())
+		// Check left first then right
+		if (players[p_left] != nullptr)
 		{
-			swap(p_idx, p_left); // If player p_idx dist is bigger then swap
-			p_idx = p_left;
-			p_left = leftC(p_idx);
+			if (players[p_idx]->getDist() > players[p_left]->getDist())
+			{
+				swap(p_idx, p_left); // If player p_idx dist is bigger then swap
+				p_idx = p_left;
+				p_left = leftC(p_idx);
+				p_right = rightC(p_idx);
+				continue;
+			}
 		}
-	}
-	if (players[p_right] != nullptr)
-	{
-		if (players[p_idx]->getDist() > players[p_right]->getDist() && p_idx < returnIdx())
+		if (players[p_right] != nullptr)
 		{
-			swap(p_idx, p_right);
-			p_idx = p_right;
-			p_right = rightC(p_idx);
+			if (players[p_idx]->getDist() > players[p_right]->getDist())
+			{	
+				swap(p_idx, p_right);
+				p_idx = p_right;
+				p_right = rightC(p_idx);
+				p_left = leftC(p_idx);
+				continue;
+			}
 		}
+		break;
 	}
-	else return;
 }
 bool CMinHeap::isExist(const std::string& name)
 {
-	for (int i = 0; i < returnIdx(); ++i)  // For loops the size of the array
+	for (int i = 0; i <= returnIdx(); ++i)  // For loops the size of the array
 	{
 		if (players[i] != nullptr)
 		{
