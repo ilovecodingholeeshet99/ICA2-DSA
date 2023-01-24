@@ -11,6 +11,8 @@ public:
 	~CMinHeap();
 
 	bool isExist(const std::string& name); // Take as reference so it does not create a copy of the variable and instead passes by reference, aka memory address
+	bool isExist(const int dist);
+	bool isExist(const std::string& name, const int dist);
 	bool isDistanceExist(const int d, const int size); // Not changing the variable throughout the function so keep as const
 
 	void insert(const std::string& name, const int d);
@@ -20,7 +22,7 @@ public:
 	void preOrder(int start) const; // No need to pass int as reference, pointer and int same number of bytes
 	void swap(int i , int j);
 	void moveup(int p_idx, int p_parent);
-	void movedown(int p_idx, int p_parent, int p_left, int p_right);
+	void movedown(int p_idx);
 
 	int findPlayer(const std::string& name);  // Returns index of player by looping through each element of the array
 	int returnIdx() const;
